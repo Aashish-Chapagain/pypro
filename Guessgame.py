@@ -18,6 +18,6 @@ while count < chances:
         print("not correct too high")
 if count <= chances and x != a  :
     print(f"\n \t The random number is {x}")
-    print("\n \t Oh no! You could not guess it ")
+    print("\n \t Opps! You could not guess it ")
      
 
