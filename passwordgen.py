@@ -5,12 +5,12 @@ def generate_password(password_length  = 16 ):
    
 
 
-    password = string.ascii_letters + string.digits + string.punctuation
+    string_collection = string.ascii_letters + string.digits + string.punctuation
     
     
 
    
-    password_ = ''.join(secrets.choice(password)  for _ in range(password_length))
+    password_ = ''.join(secrets.choice(string_collection)  for _ in range(password_length))
 
     print(password_) 
 
