@@ -1,5 +1,5 @@
 #importing class
-from new_bank import Contacts 
+from contact_class import Contacts 
 
 _contacts = Contacts() #instance of the class for every object like a variable to store the copy of class for every object 
 
