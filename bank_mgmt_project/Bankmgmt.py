@@ -47,3 +47,10 @@ person = Bank()
 person.create_new_account(name, amount, account)
 
 person.save_to_json()
+
+
+
+a = input("from deposit enter deposit : ")
+
+if a == "despost":
+    person.deposit()

@@ -1,69 +1,64 @@
-import secrets
-import string
-import json
-import os 
+#importing class
+from new_bank import Contacts 
 
-ACCOUNTNUMBERLENGTH = 13
+_contacts = Contacts() #instance of the class for every object like a variable to store the copy of class for every object 
 
 
-numbers = string.digits 
+def command(): 
+   return("""Enter (save) to save new contact
+Enter (exit) to exit program
+Enter (search) to search in contacts 
+Enter (delete) to delect the contacts """)
 
-
-
-class Bank_management(): 
-
-    customer_number = 0 
-    customer_dict = {}
-    
-
-    def __init__(self, name, account_number, balance):
-
-        self.name = name 
-        self.account_number = account_number 
-        self.balance = balance 
-    
-    @classmethod
-    def create_new_account(cls):
-        while True : 
-         try : 
-          name = (input("Enter Your full name: ")).capitalize().strip()
-          new_name = name.replace(" ","")
-          deposit_amount = float(input("Enter the first deposit amount: "))
-          account_number = "".join(secrets.choice(numbers) for _ in range(ACCOUNTNUMBERLENGTH))
-          if deposit_amount < 1 : 
-             raise ValueError("Deposit amount cannot be less than 1$")
+#function to create new contact 
+def save_new_contact():
+    while True :
+         try :
+  
+          name = input("First and Last name : ")
+          number = int(input("Enter the phone number: "))       
+          address = input("Enter address: ")
+          email  = input("Enter email: ")
           
-          if not new_name.isalpha():
-             raise ValueError("Invalid input! try again") 
-          
-
+         except ValueError: 
+            print("Something didnot worked! Try again")
+            continue 
          
-          break 
+         _contacts.save_contact(name,number,email,address)
+         _contacts.save_to_json()
+
+
+#function to delete a contact 
+def delete_a_contact(): 
+    
+      name  = input("Enter the contact name you want to delete: ")
+      _contacts.delete_from_json(name)
+
+
+list_of_commands = ["save", "exit", "search", "delete"]
+
+
+print(command())
+while True : 
+   
+    user = input("Enter the command: ").strip().lower()
+    if user not in list_of_commands:
+       print(f"command not found! Try again with \n{command()}")
+    
+    elif user == "save" : 
+         save_new_contact()
        
 
-         except ValueError as e : 
-            print(e)
-         
-         return cls(name,new_name,account_number)
-        
+         choice = input("Do you want to create new contact ? y/n: ").strip().lower()
+         if choice != "y": 
+            break 
 
-        
-         
-     
-    def display(self): 
-       print(self.name, self.account_number, self.balance, end = '\n')
-
-
-
-
-
-        
-person1 = Bank_management.create_new_account()
-person1.display()
+    elif user == 'exit': 
+       print("exiting program")
+       break
     
 
-
-
-    
+    elif user == "delete" : 
+       delete_a_contact()
 
 
