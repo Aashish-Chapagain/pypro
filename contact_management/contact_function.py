@@ -12,20 +12,23 @@ Enter (delete) to delect the contacts """)
 
 #function to create new contact 
 def save_new_contact():
-    while True :
+      while True:
          try :
   
           name = input("First and Last name : ")
           number = int(input("Enter the phone number: "))       
           address = input("Enter address: ")
           email  = input("Enter email: ")
+         
           
+          _contacts.save_contact(name,number,email,address)
+          _contacts.save_to_json()
+          break 
          except ValueError: 
             print("Something didnot worked! Try again")
-            continue 
+            
+            
          
-         _contacts.save_contact(name,number,email,address)
-         _contacts.save_to_json()
 
 
 #function to delete a contact 
@@ -47,11 +50,11 @@ while True :
     
     elif user == "save" : 
          save_new_contact()
-       
-
          choice = input("Do you want to create new contact ? y/n: ").strip().lower()
          if choice != "y": 
             break 
+       
+
 
     elif user == 'exit': 
        print("exiting program")
