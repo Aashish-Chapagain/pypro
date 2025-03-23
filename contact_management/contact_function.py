@@ -15,7 +15,7 @@ def save_new_contact():
       while True:
          try :
   
-          name = input("First and Last name : ")
+          name = input("First and Last name : ").strip().lower()
           number = int(input("Enter the phone number: "))       
           address = input("Enter address: ")
           email  = input("Enter email: ")
@@ -26,9 +26,19 @@ def save_new_contact():
           break 
          except ValueError: 
             print("Something didnot worked! Try again")
+
             
             
+def search_for_contact():
+    while True : 
          
+     try : 
+        search_name = str(input("Enter the name of the person: ")).strip().lower()
+        _contacts.search_contact(search_name)
+        break
+     except ValueError:
+        print("Something is not working! Try again")
+
 
 
 #function to delete a contact 
@@ -63,5 +73,18 @@ while True :
 
     elif user == "delete" : 
        delete_a_contact()
+       choice = input("Do you delete other contact ? y/n: ").strip().lower()
+       if choice != "y": 
+            break 
+       
+
+      
+    elif user == "search": 
+       search_for_contact()
+       choice = input("Do you want to search other contact ? y/n: ").strip().lower()
+       if choice != "y": 
+            break 
+
+
 
 
