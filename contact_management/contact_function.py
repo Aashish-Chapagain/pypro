@@ -48,6 +48,12 @@ def delete_a_contact():
       _contacts.delete_from_json(name)
 
 
+
+def edit_contact():
+    while True : 
+        pass
+        
+
 list_of_commands = ["save", "exit", "search", "delete"]
 
 

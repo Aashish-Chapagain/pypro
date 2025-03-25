@@ -21,20 +21,25 @@ class Contacts:
         self.email = email
         self.address = address
 
-      
-    def save_to_json(self):
         number_list = []
         for value in self.contacts.values():
             number_list.append(value["number"])
-        print(number_list, self.number)
         if not self.number  in number_list:
              self.contacts[self.name] = {"number": self.number, "email":self.email, "address":self.address}
-
-             with open(self.jsonfile, "w") as file:
-                json.dump(self.contacts, file, indent=3)
-           
+             self.save_to_json()
         else:
             print("Number already exists! ")
+
+    
+
+      
+    def save_to_json(self):
+             with open(self.jsonfile, "w") as file:
+                json.dump(self.contacts, file, indent=3)
+        
+
+           
+       
 
 
     def delete_from_json(self,name):
@@ -55,4 +60,7 @@ class Contacts:
         if  is_avail:
             print("No mathches found!")
                  
+
+    def edit_contact(self):
+        pass
          
