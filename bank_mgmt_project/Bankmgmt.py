@@ -24,12 +24,13 @@ class Bank:
             self.customer_number = {}
 
     # creating the method for every new customer
-    def create_new_account(self, name, balance, account_number):
+    def create_new_account(self, name, balance, account_number, number):
+        self.number = number
         self.name = name
         self.balance = balance
         self.account_number = account_number
 
-        self.customers[name] = {"account_number": account_number, "balance": balance}
+        self.customers[name] = {"number":number, "account_number": account_number, "balance": balance}
 
     def save_to_json(self):
         with open(self.file_name, "w") as file:
@@ -51,8 +52,13 @@ class Bank:
         print(self.name, self.balance, self.account_number)
 
 
+
+
+
 bank = Bank()
 
+def navigation():
+    print("""create , deposit or withdraw money""")
 
 def withdarw():
     amount = int(input("input enter the amount you want to withdraw"))
@@ -70,7 +76,7 @@ account = "".join(
     )
     for _ in range(RANDOM_VALUE)
 )
-person = Bank()
+person = bank
 
 person.create_new_account(name, amount, account)
 

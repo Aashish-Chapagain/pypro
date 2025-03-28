@@ -1,4 +1,4 @@
-import json
+# import json
 # import os
 
 # # def check_for_dublicate():
@@ -63,11 +63,30 @@ import json
 
 
 
-import string 
+# import string 
 
 
-a = string.ascii_letters + string.ascii_lowercase + string.ascii_uppercase
+# a = string.ascii_letters + string.ascii_lowercase + string.ascii_uppercase
 
-password = input("")
+# password = input("")
 
-contains_up = any()
+# contains_up = any()
+
+
+import matplotlib.pyplot as plt
+
+# Sample Data
+x = [1, 2, 3, 4, 5]
+y = [10, 20, 25, 30, 40]
+
+# Plot Graph
+plt.plot(x, y, marker='o', linestyle='--', color='b', label='Line 1')
+
+# Labels and Title
+plt.xlabel("X-axis")
+plt.ylabel("Y-axis")
+plt.title("Simple Matplotlib Plot")
+plt.legend()
+
+# Show Plot
+plt.show()
