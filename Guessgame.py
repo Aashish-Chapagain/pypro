@@ -17,7 +17,7 @@ while count < chances:
     else:
         print("not correct too high")
 if count <= chances and x != a  :
-    print(f"\n \t The random number is {x}")
+    print(f"\n \t The random number is {x} ")
     print("\n \t Opps! You could not guess it ")
      
 

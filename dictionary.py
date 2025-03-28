@@ -46,15 +46,28 @@ import json
 # save_to_json()
 
 
-number_list= []
-n = int(input("Enter number: "))
+# number_list= []
+# n = int(input("Enter number: "))
 
-with open("contacts.json", "r") as file : 
-    contacts = json.load(file)
-    for value in contacts.values():
-        number_list.append(value["number"])
+# with open("contacts.json", "r") as file : 
+#     contacts = json.load(file)
+#     for value in contacts.values():
+#         number_list.append(value["number"])
     
-    if n not in number_list : 
-         print(n)
-    else : 
-           print("already exists")
+#     if n not in number_list : 
+#          print(n)
+#     else : 
+#            print("already exists")
+
+
+
+
+
+import string 
+
+
+a = string.ascii_letters + string.ascii_lowercase + string.ascii_uppercase
+
+password = input("")
+
+contains_up = any()

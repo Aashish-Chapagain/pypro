@@ -9,9 +9,19 @@ RANDOM_VALUE = 11  # used to create random account number
 
 class Bank:
 
+    customer_number = 0
+
     def __init__(self):
         self.customers = {}
         self.file_name = "customer.json"
+
+        try:
+
+            if os.path.exists(self.file_name):
+                with open(self.file_name, "r") as file:
+                    self.customers = json.load(file)
+        except json.JSONDecodeError:
+            self.customer_number = {}
 
     # creating the method for every new customer
     def create_new_account(self, name, balance, account_number):
@@ -29,9 +39,27 @@ class Bank:
         deposit_amount = int(input("enter deposit amount"))
         self.balance += deposit_amount
 
+    def withdraw(self, amount):
+        if amount <= self.balance:
+            print(f"{amount} is debited from the account")
+            self.balance -= amount
+            self.save_to_json()
+        else:
+            print("Not enough balance! ")
+
     def display(self):
         print(self.name, self.balance, self.account_number)
 
+
+bank = Bank()
+
+
+def withdarw():
+    amount = int(input("input enter the amount you want to withdraw"))
+    bank.withdraw(amount)
+
+
+withdarw()
 
 name = input("enter name: ")
 
@@ -47,7 +75,6 @@ person = Bank()
 person.create_new_account(name, amount, account)
 
 person.save_to_json()
-
 
 
 a = input("from deposit enter deposit : ")

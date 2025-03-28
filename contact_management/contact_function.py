@@ -23,6 +23,7 @@ def save_new_contact():
           
           _contacts.save_contact(name,number,email,address)
           _contacts.save_to_json()
+          print("contact saved!")
           break 
          except ValueError: 
             print("Something didnot worked! Try again")

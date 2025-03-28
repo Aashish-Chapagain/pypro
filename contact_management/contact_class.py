@@ -36,6 +36,7 @@ class Contacts:
     def save_to_json(self):
              with open(self.jsonfile, "w") as file:
                 json.dump(self.contacts, file, indent=3)
+                
         
 
            
@@ -46,6 +47,7 @@ class Contacts:
         if name in self.contacts:
             del self.contacts[name]
             self.save_to_json()
+            print("contact Deleted")
 
     def search_contact(self, name):
         is_avail  = True 
