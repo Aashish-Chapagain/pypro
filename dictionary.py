@@ -73,20 +73,29 @@
 # contains_up = any()
 
 
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 
-# Sample Data
-x = [1, 2, 3, 4, 5]
-y = [10, 20, 25, 30, 40]
+# # Sample Data
+# x = [1, 2, 3, 4, 5]
+# y = [10, 20, 25, 30, 40]
 
-# Plot Graph
-plt.plot(x, y, marker='o', linestyle='--', color='b', label='Line 1')
+# # Plot Graph
+# plt.plot(x, y, marker='o', linestyle='--', color='b', label='Line 1')
 
-# Labels and Title
-plt.xlabel("X-axis")
-plt.ylabel("Y-axis")
-plt.title("Simple Matplotlib Plot")
-plt.legend()
+# # Labels and Title
+# plt.xlabel("X-axis")
+# plt.ylabel("Y-axis")
+# plt.title("Simple Matplotlib Plot")
+# plt.legend()
 
-# Show Plot
-plt.show()
+# # Show Plot
+# plt.show()
+
+
+
+import numpy as np 
+
+a = np.array([1,2,3])
+print(a)
+print(type(a))
+print(a.shape)
