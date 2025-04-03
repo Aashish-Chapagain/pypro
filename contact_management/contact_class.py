@@ -49,20 +49,23 @@ class Contacts:
             self.save_to_json()
             print("contact Deleted")
 
-    def search_contact(self, name):
-        is_avail  = True 
-        for key, values in self.contacts.items():
-            if name != key :
-                 
-                 continue 
-            else : 
-                 print(key,values)
-                 is_avail = False
-                 
-        if  is_avail:
-            print("No mathches found!")
-                 
 
-    def edit_contact(self):
-        pass
+
+    def search_contact(self, name):
+       if name in self.contacts:
+         print(name, self.contacts[name]) 
+         return True  
+       else:
+         print("No matches found!")
+         return False
+ 
+
+    def edit_contact(self, new_name , new_number , new_email, new_address):
+        
+        old_details = self.contacts[self.name] = {"number": self.number, "email":self.email, "address":self.address}
+
+ 
+          
+       
+        
          

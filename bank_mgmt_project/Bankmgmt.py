@@ -4,7 +4,7 @@ import os
 import json
 
 
-RANDOM_VALUE = 11  # used to create random account number
+RANDOM_VALUE = 11  
 
 
 class Bank:

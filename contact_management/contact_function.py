@@ -8,7 +8,8 @@ def command():
    return("""Enter (save) to save new contact
 Enter (exit) to exit program
 Enter (search) to search in contacts 
-Enter (delete) to delect the contacts """)
+Enter (delete) to delete the contacts
+Enter (edit) to edit the contacts """)
 
 #function to create new contact 
 def save_new_contact():
@@ -22,13 +23,13 @@ def save_new_contact():
          
           
           _contacts.save_contact(name,number,email,address)
-          _contacts.save_to_json()
           print("contact saved!")
           break 
          except ValueError: 
             print("Something didnot worked! Try again")
 
-            
+
+#search for contacts in the json file         
             
 def search_for_contact():
     while True : 
@@ -49,14 +50,38 @@ def delete_a_contact():
       _contacts.delete_from_json(name)
 
 
-
+#program to edit a contact in the json file 
 def edit_contact():
     while True : 
-        pass
+        changing_name = input("Enter the contact name you want to change: ").strip().lower()
+        is_avail = _contacts.search_contact(changing_name)
+        if is_avail : 
+           print("----------------------------------------------------")
+           print("enter none if no changes are done ! ")
+           print(f"Old Details{_contacts.search_contact(changing_name)}")
+
+           print("----------------------------------------------------")
+        
+           try : 
+               new_name = input("First and Last name : ").strip().lower()
+               new_number = int(input("Enter the phone number: "))       
+               new_address = input("Enter address: ")
+               new_email  = input("Enter email: ")
+
+               _contacts.edit_contact(new_name,new_number,new_email,new_address)
+               break
+        
+           except ValueError : 
+              print("Something didnot worked! ")
+            
+         
+
         
 
-list_of_commands = ["save", "exit", "search", "delete"]
 
+list_of_commands = ["save", "exit", "search", "delete", "edit"]
+
+print("----------------------------------------------------")
 
 print(command())
 while True : 
@@ -91,6 +116,12 @@ while True :
        choice = input("Do you want to search other contact ? y/n: ").strip().lower()
        if choice != "y": 
             break 
+       
+
+    
+    elif user == "edit":
+        edit_contact()
+        break 
 
 
 
