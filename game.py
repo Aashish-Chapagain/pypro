@@ -1,45 +1,60 @@
-import random 
-import string 
-print("\n \tWelcome to snake water gun game")
-print("""\n How would You like to play
-      a) computer vs Player(chances are random)
-      b) player vs player(chances are not random)""")
+import random
 
-# taking input from the user
+print("\n\tWelcome to Snake-Water-Gun Game!")
+print("""
+How would you like to play?
+a) Computer vs Player (chances are random)
+b) Player vs Player (chances are not random)
+""")
 
-selection = input("press \"a\" for option a or press \'b\' for option b  ")
-selection.lower()
+# Taking input from the user
+selection = input('Press "a" for option a or press "b" for option b: ')
+selection = selection.lower()
 
-#checking where user want to play vs computer or vs player
-
+# Option a: Player vs Computer
 if selection == "a":
-    player1 = str(input("Enter the name of the player: "))
-    chances_random = random.randint(3,10)
-    print("Total chances you get is: ", chances_random)
-    li_elements= ['s','g','w']
+    player1 = input("Enter the name of the player: ")
+    chances_random = random.randint(3, 10)
+    print("Total chances you get:", chances_random)
+
+    choices = ['s', 'w', 'g']
     user_pts = 0
     computer_pts = 0
+
     while chances_random > 0:
-      user_choice = str(input("Enter your choice \"s for snake\" \"w for water\" \"g for gun\" : "))
-      user_choice.lower()
-      random_choice = random.choice(li_elements)
-      print("Computer: ",random_choice)
-      if  (random_choice == "s" and user_choice == "w") or (random_choice == "w" and user_choice=="g" ) or (random_choice == "g" and user_choice == "s"):
-         computer_pts += 1 
-         print("point ", computer_pts)
-         print("The winner of the round is Computer")
-      elif random_choice==user_choice :
-         print("This round is draw ")
-      else :
-         print("The winner of this round is: ",player1 )
-         user_pts += 1 
-         print("point ", user_pts)
-      chances_random -= 1 
-      print("Remaining chances: ", chances_random)
-if user_pts > computer_pts : 
-      print(f"The winner is {player1} with {user_pts} points")
-elif user_pts == computer_pts : 
-      print(f"The game is draw computer points is {computer_pts} and {player1} is {user_pts}")
-else: 
-      print(f"The winner is computer with {computer_pts} points")
-   
+        user_choice = input('Enter your choice ("s" for Snake, "w" for Water, "g" for Gun): ').lower()
+        if user_choice not in choices:
+            print("Invalid choice! Please enter s, w, or g.")
+            continue
+
+        comp_choice = random.choice(choices)
+        print(f"Computer chose: {comp_choice}")
+
+        if (comp_choice == "s" and user_choice == "w") or \
+           (comp_choice == "w" and user_choice == "g") or \
+           (comp_choice == "g" and user_choice == "s"):
+            computer_pts += 1
+            print("Computer wins this round.")
+        elif comp_choice == user_choice:
+            print("This round is a draw.")
+        else:
+            user_pts += 1
+            print(f"{player1} wins this round.")
+
+        print(f"Score => {player1}: {user_pts}, Computer: {computer_pts}")
+        chances_random -= 1
+        print(f"Remaining chances: {chances_random}\n")
+
+    print("\n🎉 Final Result 🎉")
+    if user_pts > computer_pts:
+        print(f"The winner is {player1} with {user_pts} points!")
+    elif user_pts == computer_pts:
+        print(f"The game is a draw! Both scored {user_pts} points.")
+    else:
+        print(f"The winner is Computer with {computer_pts} points!")
+
+elif selection == "b":
+    print("Player vs Player mode is under development. Stay tuned!")
+
+else:
+    print("Invalid option selected.")
